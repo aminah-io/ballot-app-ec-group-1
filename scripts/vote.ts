@@ -1,13 +1,12 @@
-import { ethers } from "ethers"
+import { ethers } from "ethers";
 import { Ballot, Ballot__factory } from "../typechain-types";
-import * as dotenv from 'dotenv'
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 async function main() {
     const parameter = process.argv.slice(2);
-    // const contractAddress = parameter[0];
 
-    const provider = new ethers.JsonRpcProvider(process.env. RPC_ENDPOINT_URL ?? "") ;
+    const provider = new ethers.JsonRpcProvider(process.env.RPC_ENDPOINT_URL ?? "");
 
     // Pick the option that has been configured in .env
     const wallet = new ethers.Wallet(process.env.MNEMONIC ?? "", provider);
@@ -16,10 +15,10 @@ async function main() {
     console.log(`Using address ${wallet.address}`);
     const balanceBN = await provider. getBalance(wallet.address);
     const balance = Number (ethers. formatUnits (balanceBN));
-    console. log('Wallet balance ${balance)');
+    console.log(`Wallet balance ${balance}`);
 
     if (balance < 0.01) {
-        throw new Error("Not enough ethers")
+        throw new Error("Not enough ethers");
     }
 
     const ballotfactory = new Ballot__factory(wallet);
