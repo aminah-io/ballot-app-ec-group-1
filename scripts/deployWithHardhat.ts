@@ -7,7 +7,7 @@ const PROPOSALS = ["Coffee", "Tea", "Juice", "Water"]
 
 async function main() {
   await confirmContinue({
-    contract: "GitcoinResolver",
+    contract: "Ballot",
     network: hre.network.name,
     chainId: hre.network.config.chainId,
   });

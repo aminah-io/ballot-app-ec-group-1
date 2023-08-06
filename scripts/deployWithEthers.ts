@@ -1,24 +1,34 @@
-import { ethers } from "hardhat";
 import { Ballot__factory } from "../typechain-types";
+import hre, { ethers } from "hardhat";
+import * as dotenv from "dotenv";
+import { confirmContinue } from "./utils"
+dotenv.config();
 
-const PROPOSALS = ["Proposal 1", "Proposal 2", "Proposal 3"];
+const PROPOSALS = ["Coffee", "Tea", "Juice", "Water"]
 
 async function main() {
+  await confirmContinue({
+    contract: "Ballot",
+    network: hre.network.name,
+    chainId: hre.network.config.chainId,
+  });
+
   const proposals = process.argv.slice(2);
   console.log("deploying Ballot Contract");
   console.log("Proposals: ");
-  proposals.forEach((element, index) => {
-    console.log(`Proposal N. ${index + 1}: ${element}`);
+  PROPOSALS.forEach((element, index) => {
+    console.log(`Proposal #${index + 1}: ${element}`);
   });
 
-  const provider = ethers.getDefaultProvider("sepolia");
-  const lastBlock = provider.getBlock("latest");
-  console.log(lastBlock);
+  const provider = new ethers.JsonRpcProvider(process.env.RPC_ENDPOINT_URL ?? "");
+  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY ?? "", provider);
+
+  console.log(`Using address ${wallet.address}`);
   
   
-  const ballotFactory = new Ballot__factory();
+  const ballotFactory = new Ballot__factory(wallet);
   const ballotContract = await ballotFactory.deploy(
-    proposals.map(ethers.encodeBytes32String)
+    PROPOSALS.map(ethers.encodeBytes32String)
   );
   await ballotContract.waitForDeployment();
   const address = await ballotContract.getAddress();
@@ -27,7 +37,6 @@ async function main() {
     const proposal = await ballotContract.proposals(i);
     const name = ethers.decodeBytes32String(proposal.name);
     console.log({ i, name, proposal });
-    
   }
     
 }
