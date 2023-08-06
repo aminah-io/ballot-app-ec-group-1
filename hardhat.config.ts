@@ -6,16 +6,9 @@ dotenv.config();
 const config: HardhatUserConfig = {
   solidity: "0.8.19",
   paths: { tests: "tests" },
-  networks: {
-    sepolia: {
-      url: process.env.RPC_ENDPOINT_URL,
-      accounts: [`0x${process.env.PRIVATE_KEY}`],
-      chainId: 11155111,
-    }
-  }
 };
 
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
+task("accounts", "Prints the list of accounts", async (taskArgs: any, hre: { ethers: { getSigners: () => any; }; }) => {
   const accounts = await hre.ethers.getSigners();
 
   for (const account of accounts) {

@@ -42,6 +42,13 @@ describe("Ballot", () => {
       const chairperson = await ballotContract.voters(owner.address);
       expect(chairperson.weight).to.eq(1);
     });
+    it("can vote", async () => {
+      await ballotContract.vote(PROPOSALS.indexOf(PROPOSALS[1]));
+      expect((await ballotContract.proposals(1)).voteCount).to.eq(1);
+    }
+    )
+  });
+});
     it("sets the voting weight for the chairperson as 1", async () => {
       const chairperson = await ballotContract.voters(owner.address);
       expect(chairperson.weight).to.eq(1);
