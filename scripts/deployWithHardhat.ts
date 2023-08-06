@@ -1,15 +1,22 @@
-import { ethers } from "hardhat";
+import hre, { ethers } from "hardhat";
 import * as dotenv from "dotenv";
+import { confirmContinue } from "./utils"
 dotenv.config();
 
 const PROPOSALS = ["Coffee", "Tea", "Juice", "Water"]
 
 async function main() {
+  await confirmContinue({
+    contract: "GitcoinResolver",
+    network: hre.network.name,
+    chainId: hre.network.config.chainId,
+  });
+
   const proposals = process.argv.slice(2);
-  console.log("deploying Ballot Contract");
+  console.log("deploying Ballot Contract...");
   console.log("Proposals: ");
-  proposals.forEach((element, index) => {
-    console.log(`Proposal N. ${index + 1}: ${element}`);
+  PROPOSALS.forEach((element, index) => {
+    console.log(`Proposal #${index + 1}: ${element}`);
   });
 
   const ballotFactory = await ethers.getContractFactory("Ballot");
@@ -18,10 +25,8 @@ async function main() {
   );
   await ballotContract.waitForDeployment();
   const address = await ballotContract.getAddress();
-
-  const provider = new ethers.JsonRpcProvider(process.env.RPC_ENDPOINT_URL ?? "");
   
-  console.log(`Contract deployed at address: ${address}`);
+  console.log(`✅ Contract deployed at address: ${address}`);
   for (let i = 0; i < proposals.length; i++) {
     const proposal = await ballotContract.proposals(i);
     const name = ethers.decodeBytes32String(proposal.name);
