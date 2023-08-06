@@ -1,6 +1,6 @@
 # ballot-app-ec-group-1
-
-
+### Encode Club Solidity Bootcamp - Group 1 Ballot App Homework
+---
 - [Contract creation](https://sepolia.etherscan.io/tx/0x274742f052294d4769fd3aece44ebf28145aa57a0d57b80a4650467cf8e31670)
 ![Contract creation](./images/contract-creation.png)
 - [Give Right to Vote #1](https://sepolia.etherscan.io/tx/0x3c28a62643474ea2a2768edc309912ef58b9bbbf697e56673cef452b5209b567)
