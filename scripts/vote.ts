@@ -27,3 +27,8 @@ async function main() {
 
     const tx = await ballotContract.vote(Number(parameter))
 }
+
+main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+});
