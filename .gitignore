@@ -6,5 +6,6 @@ typechain-types/
 typechain-types/*
 .yarn/
 .yarn/*
+.history
 
 .env
