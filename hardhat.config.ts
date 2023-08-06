@@ -9,7 +9,8 @@ const config: HardhatUserConfig = {
   networks: {
     sepolia: {
       url: process.env.RPC_ENDPOINT_URL,
-      accounts: [`0x${process.env.PRIVATE_KEY}`]
+      accounts: [`0x${process.env.PRIVATE_KEY}`],
+      chainId: 11155111,
     }
   }
 };
