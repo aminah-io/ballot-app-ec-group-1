@@ -1,9 +1,11 @@
 import { ethers } from "ethers";
 import { Ballot, Ballot__factory } from "../typechain-types";
+
 import * as dotenv from 'dotenv';
 dotenv.config();
 
 async function main() {
+
     const parameter = process.argv.slice(2);
 
     const provider = new ethers.JsonRpcProvider(process.env.RPC_ENDPOINT_URL ?? "");

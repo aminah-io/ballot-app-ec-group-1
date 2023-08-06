@@ -18,13 +18,9 @@ async function main() {
     const contractAddress = await ballotContract.getAddress();
     console.log(`Contract deployed at address ${contractAddress}`);
 
-    const voterAddress = await args[0];
-    console.log(`Giving right to vote for address ${voterAddress}`);
+    const winningProposal = await ballotContract.winningProposal();
 
-    await ballotContract.giveRightToVote(voterAddress);
-
-    const voterWeight = (await ballotContract.voters(voterAddress)).weight;
-    console.log("Voter weight now is", voterWeight);
+    console.log("Winning proposal is with index", winningProposal);
 
 }
 

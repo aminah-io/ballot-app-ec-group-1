@@ -13,18 +13,14 @@ async function main() {
     console.log(`Using address ${wallet.address}`);
 
     const ballotFactory = new Ballot__factory(wallet);
-    const ballotContract = ballotFactory.attach("0xF6b84057fa1188E99c257d80d96e5C8EE0192992") as Ballot;
+    const ballotContract = ballotFactory.attach("0xdBB0C5c95C69e4396eB7Cf8Bcc1A23D76687bCB6") as Ballot;
 
     const contractAddress = await ballotContract.getAddress();
     console.log(`Contract deployed at address ${contractAddress}`);
 
-    const voterAddress = await args[0];
-    console.log(`Giving right to vote for address ${voterAddress}`);
+    const winningProposalName = await ballotContract.winnerName();
 
-    await ballotContract.giveRightToVote(voterAddress);
-
-    const voterWeight = (await ballotContract.voters(voterAddress)).weight;
-    console.log("Voter weight now is", voterWeight);
+    console.log("Winning proposal name is ", ethers.decodeBytes32String(winningProposalName));
 
 }
 

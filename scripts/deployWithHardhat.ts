@@ -21,7 +21,7 @@ async function main() {
 
   const ballotFactory = await ethers.getContractFactory("Ballot");
   const ballotContract = await ballotFactory.deploy(
-    proposals.map(ethers.encodeBytes32String)
+    PROPOSALS.map(ethers.encodeBytes32String)
   );
   await ballotContract.waitForDeployment();
   const address = await ballotContract.getAddress();

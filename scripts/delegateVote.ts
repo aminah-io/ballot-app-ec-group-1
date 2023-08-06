@@ -18,12 +18,12 @@ async function main() {
     const contractAddress = await ballotContract.getAddress();
     console.log(`Contract deployed at address ${contractAddress}`);
 
-    const voterAddress = await args[0];
-    console.log(`Giving right to vote for address ${voterAddress}`);
+    const delegateToAddress = await args[0];
+    console.log(`Delegating vote for address ${delegateToAddress}`);
 
-    await ballotContract.giveRightToVote(voterAddress);
+    await ballotContract.delegate(delegateToAddress);
 
-    const voterWeight = (await ballotContract.voters(voterAddress)).weight;
+    const voterWeight = (await ballotContract.voters(delegateToAddress)).weight;
     console.log("Voter weight now is", voterWeight);
 
 }

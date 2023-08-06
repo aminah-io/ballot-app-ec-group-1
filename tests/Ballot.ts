@@ -49,3 +49,37 @@ describe("Ballot", () => {
     )
   });
 });
+    it("sets the voting weight for the chairperson as 1", async () => {
+      const chairperson = await ballotContract.voters(owner.address);
+      expect(chairperson.weight).to.eq(1);
+    });
+  });
+
+  describe("when the chairperson interacts with the giveRightToVote function in the contract", async () => {
+    beforeEach(async function () {
+      const [ownerAccount, recipientAccount] = await ethers.getSigners();
+      owner = ownerAccount;
+      recipient = recipientAccount;
+      ballotContract = await loadFixture(deployContract);
+    });
+
+    it("gives right to vote for another address", async () => {
+      const voter = "0x5836e20e8720aF26E04a5Bd31E46726533b4fa51"
+      await ballotContract.giveRightToVote(voter);
+
+      const voterWeight = (await ballotContract.voters(voter)).weight;
+      expect(voterWeight).to.eq(1);
+    });
+    it("can not give right to vote for someone that has voted", async () => {
+
+      // throw Error("Not implemented");
+    });
+    it("can not give right to vote for someone that has already voting rights", async () => {
+
+      // throw Error("Not implemented");
+
+    });
+  });
+
+
+});
