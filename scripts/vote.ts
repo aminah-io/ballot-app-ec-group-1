@@ -8,9 +8,8 @@ async function main() {
 
     const provider = new ethers.JsonRpcProvider(process.env.RPC_ENDPOINT_URL ?? "");
 
-    // Pick the option that has been configured in .env
-    const wallet = new ethers.Wallet(process.env.MNEMONIC ?? "", provider);
-    // const wallet = new ethers.Wallet (process.env.PRIVATE_KEY ?? "", provider);
+    // Refused to work with mnemonics for some reason
+    const wallet = new ethers.Wallet (process.env.PRIVATE_KEY ?? "", provider);
 
     console.log(`Using address ${wallet.address}`);
     const balanceBN = await provider. getBalance(wallet.address);
@@ -23,6 +22,7 @@ async function main() {
 
     const ballotfactory = new Ballot__factory(wallet);
     const ballotContract = ballotfactory.attach("0xF6b84057fa1188E99c257d80d96e5C8EE0192992") as Ballot;
+
 
     const tx = await ballotContract.vote(Number(parameter))
 }
