@@ -474,6 +474,43 @@
       "artifacts": [
         "SignedMath"
       ]
+    },
+    "/Users/yevhen/Repo/Solidity Bootcamp Q3 2023/ballot-app-ec-group-1/contracts/TokenSale.sol": {
+      "lastModificationDate": 1691520697380,
+      "contentHash": "61a7a8548f7afb24c688dbd0d4f24c50",
+      "sourceName": "contracts/TokenSale.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./MyERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.18"
+      ],
+      "artifacts": [
+        "TokenSale"
+      ]
     }
   }
 }
