@@ -11,3 +11,4 @@ typechain-types/*
 .history
 
 .env
+cache/solidity-files-cache.json
