@@ -6,21 +6,22 @@
 - [Grant Minter Role](https://sepolia.etherscan.io/address/0x83555b198fb77d64b296d5963203b4a160c241bc#events)
 ![Grant Minter Role](./images/minter-role.png)
 
-- [Failed Give Right to Vote -- voter already added](https://sepolia.etherscan.io/tx/0xc2e40ca0c750701927d9a0a36abf235d1db91b1042eea0d5476697640be40f23)
-![Failed Give Right to Vote -- voter already added](./images/failedGiveRightToVote.png)
-- [Vote #1](https://sepolia.etherscan.io/tx/0x98cd12922f6c0794865ad3e5f188ea62c7511901a25fa8920ad39874b8258fd3)
-![Vote #1](./images/vote1.png)
-- [Vote #2](https://sepolia.etherscan.io/tx/0x74c65e054115b2b6faf7e47e69a4a96de9d7e32495b4e62439aec17695ca76f4)
+- [Minted Tokens](https://sepolia.etherscan.io/address/0x83555b198fb77d64b296d5963203b4a160c241bc#events)
+![Minted Tokens](./images/minted-token.png)
+- [TokenizedBallot Creation](https://sepolia.etherscan.io/tx/0xeb96b266ccefa707ac96d3f76b225e4fa3770f28b4c578f9b2666ed69c4180dc)
+![TokenizedBallot Creation](./images/tokenizedballot-creation.png)
+- [Vote #1](https://sepolia.etherscan.io/tx/0x04a38b5b5ad12425b38ad21ee5e1ddf9be4a6c5754f2a0aa237ba9ea048d546d)
+![Vote #2](./images/vote1.png)
+- [Vote #2](https://sepolia.etherscan.io/tx/0x84998edc659ea945686760198c41c244035584f65b1fda2d7d3e158691674cd5)
 ![Vote #2](./images/vote2.png)
-- [Vote #3](https://sepolia.etherscan.io/tx/0x27862bce8969d2d138e9dc6157fb3a8429ba475c6d2f24273ec8740ce64a469c)
+- [Vote #3](https://sepolia.etherscan.io/tx/0x7a0beed7208f6aa90d3c2d838bbdbe7a9afe1404c83fad5feebda9eada496a65)
 ![Vote #3](./images/vote3.png)
-- [Vote #4](https://sepolia.etherscan.io/tx/0xfef18289d6997f209f50749d750cd7c8758fbfa62179b2955d58d15a488a774a)
+- [Vote #4](https://sepolia.etherscan.io/tx/0xb5864dc0acfe505e7f21406da81f9d19d4c4098d03c1f2b4504f2befcf10e332)
 ![Vote #4](./images/vote4.png)
 - Ballot: what is your favorite drink?
-  - Coffee
-  - Tea
-  - Juice
-  - Water
+  - Burgers
+  - Pizza
+  - Pasta
 - Winning proposal:
 ![Winning proposal](./images/winningProposal.png)
 - Winning proposal name:
