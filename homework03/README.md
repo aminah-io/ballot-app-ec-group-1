@@ -23,6 +23,6 @@
   - Pizza
   - Pasta
 - Winning proposal:
-![Winning proposal](./images/winningProposal.png)
+![Winning proposal](./winning-proposal.png)
 - Winning proposal name:
-![Winning proposal name](./images/winningProposalName.png)
+![Winning proposal name](./images/winning-proposal-name.png)
