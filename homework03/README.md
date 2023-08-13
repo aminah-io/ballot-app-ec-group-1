@@ -18,7 +18,7 @@
 ![Vote #3](./images/vote3.png)
 - [Vote #4](https://sepolia.etherscan.io/tx/0xb5864dc0acfe505e7f21406da81f9d19d4c4098d03c1f2b4504f2befcf10e332)
 ![Vote #4](./images/vote4.png)
-- Ballot: what is your favorite drink?
+- Ballot: what is your favorite food?
   - Burgers
   - Pizza
   - Pasta
