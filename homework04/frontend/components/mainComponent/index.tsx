@@ -1,4 +1,8 @@
 import styles from "./mainComponent.module.css";
+import RequestVotingTokens from "../RequestVotingTokens";
+import CastVotes from "../CastVotes";
+import DelegateVotes from "../DelegateVote";
+import QueryResults from "../QueryResults";
 
 export default function MainComponent() {
   return (

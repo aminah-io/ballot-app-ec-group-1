@@ -11,7 +11,7 @@ const config = createConfig(
     walletConnectProjectId: "demo",
 
     // Required
-    appName: "You Create Web3 Dapp",
+    appName: "HW 04 Tokenized Dapp",
 
     // Optional
     appDescription: "Your App Description",
