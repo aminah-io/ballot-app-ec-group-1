@@ -9,7 +9,10 @@ export default function RequestVotingTokens(params: {address: `0x${string}` | un
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({address: params.address}),
+    body: JSON.stringify({
+      address: params.address,
+      voteAmount: voteAmount,
+    }),
   }
   
   const handleRequestVotingTokens = () => {
