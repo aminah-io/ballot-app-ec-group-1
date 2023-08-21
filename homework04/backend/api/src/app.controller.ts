@@ -8,17 +8,17 @@ dotenv.config({ path: '../../../.env' });
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('getAddress')
+  @Get('get-address')
   getAddress(): string {
     return this.appService.getTokenAddress();
   }
 
-  @Post('getVotingToken/:address')
-  getVotingToken(@Param('address') address: string): Promise<bigint> {
-    return this.appService.getVotingToken(address);
+  @Post('request-voting-tokens/:amount')
+  getVotingToken(@Param('amount') amount: string): Promise<bigint> {
+    return this.appService.getVotingToken(amount);
   }
 
-  @Get('getTokenBalance/:address')
+  @Get('get-token-balance/:address')
   getTokenBalance(@Param('address') address: string): Promise<bigint> {
     return this.appService.getBalance(address);
   }
