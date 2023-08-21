@@ -10,6 +10,10 @@ const TOKEN_CONTRACT_ADDRESS = process.env.TOKEN_CONTRACT_ADDRESS ?? "";
 const PRIVATE_KEY = process.env.PRIVATE_KEY ?? "";
 const RPC_ENDPOINT_URL = process.env.RPC_ENDPOINT_URL ?? "";
 
+interface RequestVotingTokensOutput {
+
+}
+
 @Injectable()
 export class AppService {
   provider: ethers.Provider;
@@ -26,9 +30,14 @@ export class AppService {
     return TOKEN_CONTRACT_ADDRESS;
   }
 
-  requestVotingTokens(address: string, amount: number): Promise<bigint> {
+  async requestVotingTokens(address: string, amount: number): Promise<any> {
     const amountToString = amount.toString();
-    return this.contract.mint(address, ethers.parseUnits(amountToString));
+    const tx = await this.contract.mint(address, ethers.parseUnits(amountToString));
+    const receipt = await tx.wait();
+    return {
+      success: true,
+      txHash: receipt.hash,
+    }
   }
 
   getBalance(address: string): Promise<bigint> {

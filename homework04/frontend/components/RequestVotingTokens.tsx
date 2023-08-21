@@ -51,11 +51,14 @@ export default function RequestVotingTokens(params: {address: `0x${string}` | un
       </div>
     );
   }
+
+  const firstFive = data.txHash.substring(0, 6)
+  const lastFive = data.txHash.substring(data.txHash.length - 5, data.txHash.length)
   
   return (
     <div>
-      <p>Mint success: {data.success ? "worked" : "failed"}</p>
-      <p>Transaction hash: {data.transactionHash}</p>
+      <h3>{data.success ? `You successfully requested ${voteAmount} voting tokens!` : "Something went wrong..."}</h3>
+      <p><b>Transaction hash:</b> <a className="underline" href={`https://sepolia.etherscan.io/tx/${data.txHash}`}>{`${firstFive}...${lastFive}`}</a></p>
     </div>
   );
 }
