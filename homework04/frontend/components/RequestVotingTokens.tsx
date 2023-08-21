@@ -11,7 +11,7 @@ export default function RequestVotingTokens(params: {address: `0x${string}` | un
     },
     body: JSON.stringify({
       address: params.address,
-      voteAmount: voteAmount,
+      amount: voteAmount,
     }),
   }
   
