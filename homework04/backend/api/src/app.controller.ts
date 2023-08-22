@@ -1,12 +1,16 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import * as dotenv from 'dotenv';
+import { MintTokensDto } from './dtos/mintTokens.dto';
 
-dotenv.config({ path: '../../../.env' });
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
+
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
+  }
 
   @Get('getAddress')
   getAddress(): string {
@@ -21,5 +25,10 @@ export class AppController {
   @Get('getTokenBalance/:address')
   getTokenBalance(@Param('address') address: string): Promise<bigint> {
     return this.appService.getBalance(address);
+  }
+
+  @Post('mint-tokens')
+  mintTokens(@Body() body: MintTokensDto): Promise<any> {
+    return this.appService.mintTokens(body.address);
   }
 }

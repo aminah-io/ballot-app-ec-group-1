@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
-import * as myTokenJson from '../../../frontend/artifacts/contracts/MyToken.sol/MyToken.json';
+import * as myTokenJson from './assets/MyToken.json';
 
-dotenv.config({ path: '../../../.env' });
+const TOKEN_CONTRACT_ADDRESS = "0x83555B198FB77d64B296d5963203B4a160C241bc"
 
-const TOKEN_CONTRACT_ADDRESS = process.env.TOKEN_CONTRACT_ADDRESS ?? ""
+// const TOKEN_CONTRACT_ADDRESS = process.env.TOKEN_CONTRACT_ADDRESS ?? ""
+
 
 @Injectable()
 export class AppService {
@@ -19,6 +19,10 @@ export class AppService {
     this.contract = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, myTokenJson.abi, this.wallet);
   }
 
+  getHello(): string {
+    return 'Hello World!';
+  }
+
   getTokenAddress(): string {
     return TOKEN_CONTRACT_ADDRESS;
   }
@@ -30,4 +34,15 @@ export class AppService {
   getBalance(address: string): Promise<bigint> {
     return this.contract.balanceOf(address);
   }
+
+  async mintTokens(address: string): Promise<any> {
+
+    console.log("Minting tx to" + address);
+    const mintAmount = ethers.parseUnits("1");
+    const tx = await this.contract.mint(address, mintAmount);
+    const receipt = await tx.wait();
+
+    return { result: true, txHash: receipt.hash };
+  }
+
 }
