@@ -2,7 +2,6 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { MintTokensDto } from './dtos/mintTokens.dto';
 
-
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) { }
@@ -12,17 +11,17 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('getAddress')
+  @Get('get-address')
   getAddress(): string {
     return this.appService.getTokenAddress();
   }
 
-  @Post('getVotingToken/:address')
-  getVotingToken(@Param('address') address: string): Promise<bigint> {
-    return this.appService.getVotingToken(address);
+  @Post('request-voting-tokens')
+  requestVotingTokens(@Body() body: RequestVotingTokensDto): Promise<bigint> {
+    return this.appService.requestVotingTokens(body.address, body.amount);
   }
 
-  @Get('getTokenBalance/:address')
+  @Get('get-token-balance/:address')
   getTokenBalance(@Param('address') address: string): Promise<bigint> {
     return this.appService.getBalance(address);
   }
