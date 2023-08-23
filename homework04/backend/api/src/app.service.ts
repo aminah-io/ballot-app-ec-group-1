@@ -1,18 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
-// import * as myTokenJson from '../../../../homework03/artifacts/contracts/ERC20Votes.sol/MyToken.json';
-import { MyTokenAbi } from './abi/MyTokenAbi';
+import * as myTokenJson from './assets/MyToken.json';
 
-dotenv.config();
+const TOKEN_CONTRACT_ADDRESS = "0x83555B198FB77d64B296d5963203B4a160C241bc"
 
-const TOKEN_CONTRACT_ADDRESS = process.env.TOKEN_CONTRACT_ADDRESS ?? "";
+// import { MyTokenAbi } from './abi/MyTokenAbi';
+
+
+// const TOKEN_CONTRACT_ADDRESS = process.env.TOKEN_CONTRACT_ADDRESS ?? "";
 const PRIVATE_KEY = process.env.PRIVATE_KEY ?? "";
 const RPC_ENDPOINT_URL = process.env.RPC_ENDPOINT_URL ?? "";
 
-interface RequestVotingTokensOutput {
-
-}
 
 @Injectable()
 export class AppService {
@@ -24,6 +22,10 @@ export class AppService {
     this.provider = new ethers.JsonRpcProvider(RPC_ENDPOINT_URL);
     this.wallet = new ethers.Wallet(PRIVATE_KEY, this.provider);
     this.contract = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, MyTokenAbi, this.wallet);
+  }
+
+  getHello(): string {
+    return 'Hello World!';
   }
 
   getTokenAddress(): string {
@@ -43,4 +45,15 @@ export class AppService {
   getBalance(address: string): Promise<bigint> {
     return this.contract.balanceOf(address);
   }
+
+  async mintTokens(address: string): Promise<any> {
+
+    console.log("Minting tx to" + address);
+    const mintAmount = ethers.parseUnits("1");
+    const tx = await this.contract.mint(address, mintAmount);
+    const receipt = await tx.wait();
+
+    return { result: true, txHash: receipt.hash };
+  }
+
 }
