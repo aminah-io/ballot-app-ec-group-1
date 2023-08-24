@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { MintTokensDto } from './dtos/mintTokens.dto';
+import { RequestVotingTokensDto } from './dtos/requestVotingTokens.dto';
 
 @Controller()
 export class AppController {
