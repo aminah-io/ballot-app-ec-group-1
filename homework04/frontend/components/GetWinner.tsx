@@ -22,11 +22,11 @@ export default function GetWinner({ tokenizedBallotAddress, abi }: GetWinnerProp
   if (isError) return <p>Error fetching winner</p>;
 
   const winnerBytes = data as string;
-  const winner = ethers.utils.parseBytes32String(winnerBytes);
+  const winner = ethers.decodeBytes32String(winnerBytes);
 
   return (
     <div>
-      <p className="text-3xl text-center mt-20">The winner is <span className="text-orange-600">{winner}</span>!</p>
+      <p className="text-3xl text-center m-10">The winner is <span className="text-orange-600">{winner}</span>!</p>
     </div>
   );
 }

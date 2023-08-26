@@ -16,11 +16,11 @@ export default function TokenBalance({ address, tokenizedBallotAddress, abi }: T
     args: [address],
   });
 
-  if (isLoading) return <div className="mt-10">Fetching balance…</div>;
-  if (!data) return <p className="mt-10">No balance profile data</p>;
+  if (isLoading) return <div className="m-10">Fetching balance…</div>;
+  if (!data) return <p className="m-10">No balance profile data</p>;
 
   const balance = (data as BigInt).toString();
 
   if (isError) return <div>Error fetching balance</div>;
-  return <div className="mt-10">Balance: {balance}</div>;
+  return <div className="m-10">Balance: {balance}</div>;
 }

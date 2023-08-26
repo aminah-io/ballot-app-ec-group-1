@@ -30,11 +30,12 @@ export default function RequestVotingTokens(params: {
   if (isLoading) return <div>Requesting tokens from API...</div>;
   if (!data) {
     return (
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center m-10">
+        <h3 className="text-xl font-semibold text-center">Request Voting Tokens</h3>
         <form className="flex flex-col justify-center mt-3">
           <label>Enter amount of voting token you want to request:</label>
           <input
-            className="mt-2"
+            className="mt-2 border-gray-400 border p-2 rounded-md"
             type="number"
             min={0.1}
             max={1.0}
@@ -54,18 +55,6 @@ export default function RequestVotingTokens(params: {
     );
   }
 
-  // const firstFive = data.txHash.substring(0, 6);
-  // const lastFive = data.txHash.substring(
-  //   data.txHash.length - 5,
-  //   data.txHash.length
-  // );
-
-  const firstFive = "sdgfdfgdfsgdsfgsdfhgsfdhsgf".substring(0, 6);
-  const lastFive = "sdgfdfgdfsgdsfgsdfhgsfdhsgf".substring(
-    data.txHash.length - 5,
-    data.txHash.length
-  );
-
   return (
     <div>
       <h3>
@@ -76,9 +65,9 @@ export default function RequestVotingTokens(params: {
       <p>
         <b>Transaction hash:</b>{" "}
         <a
-          className="underline"
+          className="underline flex flex-wrap"
           href={`https://sepolia.etherscan.io/tx/${data.txHash}`}
-        >{`${firstFive}...${lastFive}`}</a>
+        >{data.txHash}</a>
       </p>
     </div>
   );

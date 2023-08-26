@@ -16,10 +16,10 @@ export default function TokenName({ tokenizedBallotAddress, abi }: TokenNameProp
 
   const name = typeof data === "string" ? data : 0;
 
-  if (isLoading) return <div className="text-center mt-10">Fetching name…</div>;
+  if (isLoading) return <div className="text-center m-10">Fetching name…</div>;
   if (isError) return (
-    <div className="text-center mt-10">
-      <h3 className="text-center font-semibold">Token Name:</h3>
+    <div className="text-center m-10">
+      <h3 className="text-center font-semibold mb-2">Token Name:</h3>
       <div>Error fetching name</div>
     </div>
   );

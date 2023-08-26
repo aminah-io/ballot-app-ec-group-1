@@ -25,28 +25,34 @@ export default function PageBody({
       <RequestVotingTokens
         address={address}
       />
+      <hr />
       <TokenBalance
         address={address}
         tokenizedBallotAddress={tokenizedBallotAddress}
         abi={abi}
       />
+      <hr />
       <TokenName
         tokenizedBallotAddress={tokenizedBallotAddress}
         abi={abi}
       />
+      <hr />
       <VotingPower
         address={address}
         tokenizedBallotAddress={tokenizedBallotAddress}
         abi={abi}
       />
+      <hr />
       <DelegateVote
         tokenizedBallotAddress={tokenizedBallotAddress}
         abi={abi}
       />
+      <hr />
       <Vote
         tokenizedBallotAddress={tokenizedBallotAddress}
         abi={abi}
       />
+      <hr />
       <GetWinner
         tokenizedBallotAddress={tokenizedBallotAddress}
         abi={abi}

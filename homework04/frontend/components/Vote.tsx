@@ -32,12 +32,12 @@ export default function Vote({ tokenizedBallotAddress, abi }: VoteProps) {
   });
 
   return (
-    <div className="mt-10">
-      <p className="font-semibold text-xl">Proposals:</p>
+    <div className="m-10">
+      <h3 className="text-center font-semibold mb-2">Proposals:</h3>
       <form>
-        <label className="mb-4">Choose the number of the proposal you want to vote for:</label>
+        <label className="mb-4">Choose the proposal you want to vote for:</label>
         <div className="flex flex-col">
-          <select className="mb-4 border-gray-500 border-2 bg-gray-200" name="voteChoice" onChange={(e) => setVoteChoice(e.target.value)}>
+          <select className="mb-4 border-gray-500 border bg-gray-200 p-2 rounded-md" name="voteChoice" onChange={(e) => setVoteChoice(e.target.value)}>
             <option value="0">Burgers</option>
             <option value="1">Pizza</option>
             <option value="2">Pasta</option>
@@ -48,7 +48,7 @@ export default function Vote({ tokenizedBallotAddress, abi }: VoteProps) {
         className="mt-2 rounded-full bg-indigo-600 px-4 py-2 text-sm font-normal text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         onClick={() => write?.()}
       >
-        Request Voting Tokens
+        Vote Now
       </button>
     </div>
   );
