@@ -32,12 +32,16 @@ export default function Vote({ tokenizedBallotAddress, abi }: VoteProps) {
   });
 
   return (
-    <div className="m-10">
+    <div className="m-10 flex flex-col">
       <h3 className="text-center font-semibold mb-2">Proposals:</h3>
       <form>
-        <label className="mb-4">Choose the proposal you want to vote for:</label>
+        <label>Choose the proposal you want to vote for:</label>
         <div className="flex flex-col">
-          <select className="mb-4 border-gray-500 border bg-gray-200 p-2 rounded-md" name="voteChoice" onChange={(e) => setVoteChoice(e.target.value)}>
+          <select
+            className="border-gray-500 border bg-gray-200 p-2 rounded-md"
+            name="voteChoice"
+            onChange={(e) => setVoteChoice(e.target.value)}
+          >
             <option value="0">Burgers</option>
             <option value="1">Pizza</option>
             <option value="2">Pasta</option>

@@ -20,7 +20,7 @@ export default function TokenName({ tokenizedBallotAddress, abi }: TokenNameProp
   if (isError) return (
     <div className="text-center m-10">
       <h3 className="text-center font-semibold mb-2">Token Name:</h3>
-      <div>Error fetching name</div>
+      <p className="text-red-700">Error fetching name</p>
     </div>
   );
   return (
