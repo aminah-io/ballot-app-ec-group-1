@@ -43,7 +43,7 @@ export default function RootLayout({
             >
               <Navbar />
               <div style={{ flexGrow: 1 }}>{children}</div>
-              <Footer />
+              {/* <Footer /> */}
             </div>
           </body>
         </ConnectKitProvider>
