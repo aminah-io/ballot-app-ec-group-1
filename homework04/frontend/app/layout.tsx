@@ -3,6 +3,9 @@ import { WagmiConfig, createConfig } from "wagmi";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 import Navbar from "@/components/navigation/navbar";
 import Footer from "@/components/navigation/footer";
+import { sepolia } from "wagmi/chains";
+
+const chains = [sepolia];
 
 const config = createConfig(
   getDefaultConfig({
@@ -12,6 +15,7 @@ const config = createConfig(
 
     // Required
     appName: "HW 04 Tokenized Dapp",
+    chains,
 
     // Optional
     appDescription: "Your App Description",
@@ -30,10 +34,16 @@ export default function RootLayout({
       <WagmiConfig config={config}>
         <ConnectKitProvider mode="dark">
           <body>
-            <div style={{ display: "flex", flexDirection: "column", minHeight: "105vh" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                minHeight: "105vh",
+              }}
+            >
               <Navbar />
-              <div style={{flexGrow: 1}}>{children}</div>
-              <Footer />
+              <div style={{ flexGrow: 1 }}>{children}</div>
+              {/* <Footer /> */}
             </div>
           </body>
         </ConnectKitProvider>

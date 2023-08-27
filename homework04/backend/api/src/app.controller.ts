@@ -3,6 +3,9 @@ import { AppService } from './app.service';
 import { MintTokensDto } from './dtos/mintTokens.dto';
 import { RequestVotingTokensDto } from './dtos/requestVotingTokens.dto';
 
+import * as dotenv from 'dotenv'
+dotenv.config();
+
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) { }

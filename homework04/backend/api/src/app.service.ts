@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { ethers } from 'ethers';
-import * as myTokenJson from './assets/MyToken.json';
+// import * as myTokenJson from './assets/MyToken.json';
 
 const TOKEN_CONTRACT_ADDRESS = "0x83555B198FB77d64B296d5963203B4a160C241bc"
 
-// import { MyTokenAbi } from './abi/MyTokenAbi';
+import { MyTokenAbi } from './abi/MyTokenAbi';
 
 
 // const TOKEN_CONTRACT_ADDRESS = process.env.TOKEN_CONTRACT_ADDRESS ?? "";
@@ -19,8 +19,8 @@ export class AppService {
   contract: ethers.Contract;
 
   constructor() {
-    this.provider = new ethers.JsonRpcProvider(RPC_ENDPOINT_URL);
-    this.wallet = new ethers.Wallet(PRIVATE_KEY, this.provider);
+    this.provider = new ethers.JsonRpcProvider(process.env.RPC_ENDPOINT_URL ?? "");
+    this.wallet = new ethers.Wallet(process.env.PRIVATE_KEY ?? "", this.provider);
     this.contract = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, MyTokenAbi, this.wallet);
   }
 
