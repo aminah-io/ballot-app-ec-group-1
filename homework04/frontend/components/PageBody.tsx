@@ -8,7 +8,6 @@ import DelegateVote from "./DelegateVote";
 import VotingPower from "./VotingPower";
 import GetWinner from "./GetWinner";
 
-
 interface PageBodyProps {
   address: `0x${string}` | undefined;
   tokenizedBallotAddress: `0x${string}` | undefined;

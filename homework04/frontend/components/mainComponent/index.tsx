@@ -2,24 +2,19 @@ import styles from "./mainComponent.module.css";
 import PageBody from "../PageBody";
 import {
   useAccount,
-  useNetwork,
-  useBalance,
-  useContractRead,
-  useContractWrite,
-  useWaitForTransaction,
-  usePrepareContractWrite,
 } from "wagmi";
 
-import { ethers, BytesLike } from "ethers";
+import * as dotenv from "dotenv";
+dotenv.config({ path: "./../../../.env" });
 
-// import { tokenBalanceAbi, tokenNameAbi } from "../../abis/tokenAbi";
-const TOKEN_CONTRACT_ADDRESS = "0x83555B198FB77d64B296d5963203B4a160C241bc";
 
-const TOKENIZED_BALLOT_ADDRESS = "0xC572b96f571FB5bfe6438C3981A4E4dF02c7ad43";
+const TOKENIZED_BALLOT_ADDRESS = process.env.TOKENIZED_BALLOT_ADDRESS as `0x${string}` ?? "";
 
-import { MyTokenAbi } from "../../assets/MyTokenAbi";
-import { useEffect, useState } from "react";
 import { TokenizedBallotAbi } from "@/assets/TokenizedBallotAbi";
+import TokenBalance from "../TokenBalance";
+import TokenName from "../TokenName";
+import GetWinner from "../GetWinner";
+import DelegateVote from "../DelegateVote";
 
 export default function MainComponent() {
   const { address, isConnecting, isDisconnected } = useAccount();
@@ -39,10 +34,10 @@ export default function MainComponent() {
             tokenizedBallotAddress={TOKENIZED_BALLOT_ADDRESS}
             abi={TokenizedBallotAbi}
           />
-          {/* <TokenBalance address={address}></TokenBalance>
-          <TokenName></TokenName>
-          <DelegateVote></DelegateVote>
-          <GetWinner></GetWinner> */}
+          <TokenBalance address={address} tokenizedBallotAddress={undefined} abi={undefined}></TokenBalance>
+          <TokenName tokenizedBallotAddress={undefined} abi={undefined}></TokenName>
+          <DelegateVote tokenizedBallotAddress={undefined} abi={undefined}></DelegateVote>
+          <GetWinner tokenizedBallotAddress={undefined} abi={undefined}></GetWinner>
 
         </div>
       ) : (

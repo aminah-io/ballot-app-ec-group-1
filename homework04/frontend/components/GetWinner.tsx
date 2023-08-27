@@ -21,8 +21,13 @@ export default function GetWinner({ tokenizedBallotAddress, abi }: GetWinnerProp
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error fetching winner</p>;
 
-  const winnerBytes = data as string;
-  const winner = ethers.decodeBytes32String(winnerBytes);
+  let winnerBytes;
+  let winner;
+
+  if (winnerBytes != null) {
+    winnerBytes = data as string;
+    winner = ethers.decodeBytes32String(winnerBytes);
+  }
 
   return (
     <div>
