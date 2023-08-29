@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.7.0 <0.9.0;
 
-import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
-import { LotteryToken } from "./LotteryToken.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {LotteryToken} from "./LotteryToken.sol";
 
 /// @title A very simple lottery contract
 /// @author Matheus Pagani
