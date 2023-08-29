@@ -1,6 +1,5 @@
 import RequestVotingTokens from "./RequestVotingTokens";
 import { Narrow, Abi } from "viem";
-
 import Vote from "./Vote";
 import TokenBalance from "./TokenBalance";
 import TokenName from "./TokenName";

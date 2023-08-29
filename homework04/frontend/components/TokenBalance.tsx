@@ -1,9 +1,10 @@
 import { useContractRead } from "wagmi";
-
 import { Narrow, Abi } from "viem";
-
+import * as dotenv from 'dotenv';
 import { MyTokenAbi } from "../assets/MyTokenAbi";
-const TOKEN_CONTRACT_ADDRESS = "0x83555B198FB77d64B296d5963203B4a160C241bc";
+
+dotenv.config( { path: '../../.env'} )
+const TOKEN_CONTRACT_ADDRESS = process.env.TOKEN_CONTRACT_ADDRESS as `0x${string}`?? "";
 
 interface TokenBalanceProps {
   address: `0x${string}` | undefined;
