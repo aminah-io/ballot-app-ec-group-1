@@ -1,9 +1,10 @@
 import { useContractRead } from "wagmi";
-
 import { Narrow, Abi } from "viem";
-
 import { MyTokenAbi } from "../assets/MyTokenAbi";
-const TOKEN_CONTRACT_ADDRESS = "0x83555B198FB77d64B296d5963203B4a160C241bc";
+import * as dotenv from 'dotenv';
+
+dotenv.config( { path: '../../.env'} )
+const TOKEN_CONTRACT_ADDRESS = process.env.TOKEN_CONTRACT_ADDRESS as `0x${string}`?? "";
 
 interface TokenNameProps {
   tokenizedBallotAddress: `0x${string}` | undefined;

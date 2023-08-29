@@ -1,13 +1,11 @@
 import RequestVotingTokens from "./RequestVotingTokens";
 import { Narrow, Abi } from "viem";
-
 import Vote from "./Vote";
 import TokenBalance from "./TokenBalance";
 import TokenName from "./TokenName";
 import DelegateVote from "./DelegateVote";
 import VotingPower from "./VotingPower";
 import GetWinner from "./GetWinner";
-
 
 interface PageBodyProps {
   address: `0x${string}` | undefined;

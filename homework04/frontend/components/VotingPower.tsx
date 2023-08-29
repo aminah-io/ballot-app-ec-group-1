@@ -24,7 +24,11 @@ export default function VotingPower({
   if (isError)
     return <p className="text-center m-10">Error fetching voting power</p>;
 
-  const votingPower = (data as BigInt).toString();
+  let votingPower;
+
+  if (votingPower != null) {
+  votingPower = (data as BigInt).toString();
+  }
 
   return (
     <div className="m-10">
