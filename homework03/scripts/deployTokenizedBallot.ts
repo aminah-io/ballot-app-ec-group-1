@@ -14,7 +14,7 @@ async function main() {
     const provider = new ethers.JsonRpcProvider(process.env.RPC_ENDPOINT_URL ?? "");
     const wallet = new ethers.Wallet(process.env.PRIVATE_KEY ?? "", provider);
 
-    const myTokenAddress = "0x83555B198FB77d64B296d5963203B4a160C241bc";
+    const myTokenAddress = "0xeC6f798a7Ad0D224b12C3c3Ef8876842580322C5";
     const blockNumber = await provider.getBlockNumber();
 
     const tokenizedBallotFactory = new TokenizedBallot__factory(wallet);

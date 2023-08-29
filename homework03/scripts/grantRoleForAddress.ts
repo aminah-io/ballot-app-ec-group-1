@@ -13,7 +13,7 @@ async function main() {
     console.log(`Using address ${wallet.address}`);
 
 
-    const myTokenContractAddress = "";
+    const myTokenContractAddress = "0xeC6f798a7Ad0D224b12C3c3Ef8876842580322C5";
     const myTokenFactory = new MyToken__factory(wallet);
     const myTokenContract = myTokenFactory.attach(myTokenContractAddress) as MyToken;
 
