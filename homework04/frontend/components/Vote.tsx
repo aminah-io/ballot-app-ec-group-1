@@ -2,9 +2,15 @@ import { useState } from "react";
 import { Narrow, Abi } from "viem";
 import {
   useContractWrite,
-  useWaitForTransaction,
   usePrepareContractWrite,
 } from "wagmi";
+import * as dotenv from "dotenv";
+
+dotenv.config({ path: "./../../../.env" });
+
+const TOKENIZED_BALLOT_ADDRESS = process.env.TOKENIZED_BALLOT_ADDRESS as `0x${string}` ?? "";
+
+import { TokenizedBallotAbi } from "../assets/TokenizedBallotAbi";
 
 interface VoteProps {
   tokenizedBallotAddress: `0x${string}` | undefined;
@@ -13,23 +19,22 @@ interface VoteProps {
 
 export default function Vote({ tokenizedBallotAddress, abi }: VoteProps) {
   const [responseData, setResponseData] = useState<any>(null);
-  const [voteChoice, setVoteChoice] = useState("");
+  const [voteChoice, setVoteChoice] = useState<string>("");
+
+  const [proposal, setProposal] = useState<string>("1");
+  const [amount, setAmount] = useState<string>("1");
 
   const { config } = usePrepareContractWrite({
-    address: tokenizedBallotAddress,
-    abi: abi,
+    address: TOKENIZED_BALLOT_ADDRESS,
+    abi: TokenizedBallotAbi,
     functionName: "vote",
-    args: [voteChoice],
+    args: ["1", "1"],
     onError(error) {
       console.log(error);
     },
   });
 
-  const { data, write } = useContractWrite(config);
-
-  const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: data?.hash,
-  });
+  const { data, isLoading, isSuccess, write } = useContractWrite(config);
 
   return (
     <div className="m-10 flex flex-col">
@@ -42,39 +47,21 @@ export default function Vote({ tokenizedBallotAddress, abi }: VoteProps) {
             name="voteChoice"
             onChange={(e) => setVoteChoice(e.target.value)}
           >
-            <option value="0">Burgers</option>
-            <option value="1">Pizza</option>
-            <option value="2">Pasta</option>
+            <option value="0">Football</option>
+            <option value="1">Basketball</option>
+            <option value="2">Tennis</option>
           </select>
         </div>
       </form>
       <button
+        disabled={!write}
         className="mt-2 rounded-full bg-indigo-600 px-4 py-2 text-sm font-normal text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         onClick={() => write?.()}
       >
         Vote Now
       </button>
+      {isLoading && <div>Check Wallet</div>}
+      {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
     </div>
   );
 }
-//     <div>
-//     <p>Proposal Number: </p>
-//       < p > Amount: </>
-//         < button disabled = { isLoading } onClick = {() => write?.()
-// }>
-//   Vote
-//   < /button>
-// {
-//   isLoading && <p>Voting...</p>}
-//   {
-//     isSuccess && (
-//       <div>
-//       <p>Successfully voted < /p>
-//         < p > {`Transaction Hash: ${data?.hash}`
-//   } </p>
-//     < /div>
-//       )
-// }
-// </div>
-//   );
-// }

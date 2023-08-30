@@ -33,11 +33,6 @@ export default function MainComponent() {
             tokenizedBallotAddress={TOKENIZED_BALLOT_ADDRESS}
             abi={TokenizedBallotAbi}
           />
-          <TokenBalance address={address} tokenizedBallotAddress={undefined} abi={undefined}></TokenBalance>
-          <TokenName tokenizedBallotAddress={undefined} abi={undefined}></TokenName>
-          <DelegateVote tokenizedBallotAddress={undefined} abi={undefined}></DelegateVote>
-          <GetWinner tokenizedBallotAddress={undefined} abi={undefined}></GetWinner>
-
         </div>
       ) : (
         <div className={styles.container}>
