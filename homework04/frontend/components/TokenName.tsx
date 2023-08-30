@@ -22,17 +22,18 @@ export default function TokenName({
 
   const name = typeof data === "string" ? data : 0;
 
-  if (isLoading) return <div className="text-center m-10">Fetching name…</div>;
+  if (isLoading) return <div className="text-center m-2">Fetching name…</div>;
   if (isError)
     return (
-      <div className="text-center m-10">
+      <div className="text-center m-2">
         <h3 className="text-center font-semibold mb-2">Token Name:</h3>
         <p className="text-red-700">Error fetching name</p>
       </div>
     );
   return (
-    <div>
-      <p className="text-center mt-10">Token name: {name}</p>
+    <div className="text-center m-2">
+      <h3 className="text-center font-semibold mb-2">Token Name</h3>
+      <p className="text-center mt-2">{name}</p>
     </div>
   );
 }

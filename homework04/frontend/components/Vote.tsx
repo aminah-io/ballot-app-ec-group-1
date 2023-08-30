@@ -18,18 +18,16 @@ interface VoteProps {
 
 export default function Vote({ tokenizedBallotAddress, abi }: VoteProps) {
   const [responseData, setResponseData] = useState<any>(null);
-  const [voteChoice, setVoteChoice] = useState<string>("");
-
-  const [proposal, setProposal] = useState<string>("1");
-  const [amount, setAmount] = useState<string>("1");
+  const [voteProposal, setVoteProposal] = useState<string>("0");
+  const [voteAmount, setVoteAmount] = useState<string>("0.1");
 
   const { config } = usePrepareContractWrite({
     address: TOKENIZED_BALLOT_ADDRESS,
     abi: TokenizedBallotAbi,
     functionName: "vote",
-    args: ["1", "1"],
+    args: [parseInt(voteProposal), ethers.parseUnits(voteAmount)],
     onError(error) {
-      console.log(error);
+      console.log("🛑 VOTE ERROR: ", error);
     },
   });
 
@@ -43,13 +41,26 @@ export default function Vote({ tokenizedBallotAddress, abi }: VoteProps) {
         <div className="flex flex-col">
           <select
             className="border-gray-500 border bg-gray-200 p-2 rounded-md"
-            name="voteChoice"
-            onChange={(e) => setVoteChoice(e.target.value)}
+            name="voteProposal"
+            onChange={(e) => setVoteProposal(e.target.value)}
           >
             <option value="0">Football</option>
             <option value="1">Basketball</option>
             <option value="2">Tennis</option>
           </select>
+        </div>
+        <div>
+        <label>How much voting power do you want to allocate to your chosen proposal?:</label>
+        <input
+            className="mt-2 border-gray-400 border p-2 rounded-md"
+            type="number"
+            min={0.1}
+            max={1.0}
+            step={0.1}
+            placeholder="0.5"
+            value={voteAmount}
+            onChange={(e) => setVoteAmount(e.target.value)}
+          />
         </div>
       </form>
       <button
@@ -60,28 +71,7 @@ export default function Vote({ tokenizedBallotAddress, abi }: VoteProps) {
         Vote Now
       </button>
       {isLoading && <div>Check Wallet</div>}
-      {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
+      {isSuccess && <div className="mt-3">Transaction: <a className="text-sm hover:underline" href={`https://sepolia.etherscan.io/address/${data?.hash}`}>{data?.hash}</a></div>}
     </div>
   );
 }
-//     <div>
-//     <p>Proposal Number: </p>
-//       < p > Amount: </>
-//         < button disabled = { isLoading } onClick = {() => write?.()
-// }>
-//   Vote
-//   < /button>
-// {
-//   isLoading && <p>Voting...</p>}
-//   {
-//     isSuccess && (
-//       <div>
-//       <p>Successfully voted < /p>
-//         < p > {`Transaction Hash: ${data?.hash}`
-//   } </p>
-//     < /div>
-//       )
-// }
-// </div>
-//   );
-// }

@@ -38,11 +38,8 @@ export default function MainComponent() {
             address={address}
             tokenizedBallotAddress={TOKENIZED_BALLOT_ADDRESS}
             abi={TokenizedBallotAbi}
+            myToken={TOKEN_CONTRACT_ADDRESS}
           />
-          {/* <TokenBalance address={address}></TokenBalance>
-          <TokenName></TokenName>
-          <DelegateVote></DelegateVote>
-          <GetWinner></GetWinner> */}
         </div>
       ) : (
         <div className={styles.container}>
