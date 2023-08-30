@@ -10,6 +10,7 @@ import GetWinner from "./GetWinner";
 interface PageBodyProps {
   address: `0x${string}` | undefined;
   tokenizedBallotAddress: `0x${string}` | undefined;
+  myToken: `0x${string}` | undefined;
   abi: Narrow<readonly unknown[] | Abi> | undefined;
 }
 
@@ -17,6 +18,7 @@ export default function PageBody({
   address,
   tokenizedBallotAddress,
   abi,
+  myToken,
 }: PageBodyProps) {
   return (
     <div>
@@ -28,6 +30,7 @@ export default function PageBody({
         address={address}
         tokenizedBallotAddress={tokenizedBallotAddress}
         abi={abi}
+        myToken={myToken}
       />
       <hr />
       <TokenName
@@ -39,6 +42,7 @@ export default function PageBody({
         address={address}
         tokenizedBallotAddress={tokenizedBallotAddress}
         abi={abi}
+        myToken={myToken}
       />
       <hr />
       <DelegateVote

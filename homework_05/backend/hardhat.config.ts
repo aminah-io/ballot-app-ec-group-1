@@ -1,8 +1,6 @@
 import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomicfoundation/hardhat-ethers";
 import "@nomicfoundation/hardhat-toolbox";
-// import "hardhat";
-// import "ethers";
 import * as dotenv from "dotenv";
 dotenv.config();
 

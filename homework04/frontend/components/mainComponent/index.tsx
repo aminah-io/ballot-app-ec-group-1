@@ -32,6 +32,7 @@ export default function MainComponent() {
             address={address}
             tokenizedBallotAddress={TOKENIZED_BALLOT_ADDRESS}
             abi={TokenizedBallotAbi}
+            myToken={TOKEN_CONTRACT_ADDRESS}
           />
         </div>
       ) : (
