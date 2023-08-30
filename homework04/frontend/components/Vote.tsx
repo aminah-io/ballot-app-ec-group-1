@@ -4,14 +4,13 @@ import {
   useContractWrite,
   usePrepareContractWrite,
 } from "wagmi";
+import ethers from 'ethers';
+import { TokenizedBallotAbi } from "../assets/TokenizedBallotAbi";
 import * as dotenv from "dotenv";
 
 dotenv.config({ path: "./../../../.env" });
 
 const TOKENIZED_BALLOT_ADDRESS = process.env.TOKENIZED_BALLOT_ADDRESS as `0x${string}` ?? "";
-
-import { TokenizedBallotAbi } from "../assets/TokenizedBallotAbi";
-
 interface VoteProps {
   tokenizedBallotAddress: `0x${string}` | undefined;
   abi: Narrow<readonly unknown[] | Abi> | undefined;

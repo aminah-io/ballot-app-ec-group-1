@@ -7,6 +7,7 @@ import * as dotenv from "dotenv";
 dotenv.config({ path: "./../../../.env" });
 
 const TOKEN_CONTRACT_ADDRESS = process.env.TOKEN_CONTRACT_ADDRESS as `0x${string}` ?? "";
+let votingPower: string;
 
 interface VotingPowerProps {
   address: `0x${string}` | undefined;
@@ -35,7 +36,9 @@ export default function VotingPower({
   if (isError)
     return <p className="text-center m-10">Error fetching voting power</p>;
 
-  const votingPower = (data as BigInt).toString();
+  if (votingPower != null) {
+   votingPower = (data as BigInt).toString();
+  }
 
   return (
     <div className="m-2">

@@ -2,6 +2,7 @@
 import { WagmiConfig, createConfig } from "wagmi";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 import Navbar from "@/components/navigation/navbar";
+import Footer from "@/components/navigation/footer";
 import { sepolia } from "wagmi/chains";
 import * as dotenv from "dotenv";
 
