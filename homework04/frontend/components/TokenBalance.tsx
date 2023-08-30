@@ -3,7 +3,7 @@ import { useContractRead } from "wagmi";
 import { Narrow, Abi } from "viem";
 
 import { MyTokenAbi } from "../assets/MyTokenAbi";
-const TOKEN_CONTRACT_ADDRESS = "0x83555B198FB77d64B296d5963203B4a160C241bc";
+const TOKEN_CONTRACT_ADDRESS = "0xeC6f798a7Ad0D224b12C3c3Ef8876842580322C5";
 
 interface TokenBalanceProps {
   address: `0x${string}` | undefined;

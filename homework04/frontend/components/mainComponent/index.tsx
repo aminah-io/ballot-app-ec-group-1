@@ -13,9 +13,9 @@ import {
 import { ethers, BytesLike } from "ethers";
 
 // import { tokenBalanceAbi, tokenNameAbi } from "../../abis/tokenAbi";
-const TOKEN_CONTRACT_ADDRESS = "0x83555B198FB77d64B296d5963203B4a160C241bc";
+const TOKEN_CONTRACT_ADDRESS = "0xeC6f798a7Ad0D224b12C3c3Ef8876842580322C5";
 
-const TOKENIZED_BALLOT_ADDRESS = "0xC572b96f571FB5bfe6438C3981A4E4dF02c7ad43";
+const TOKENIZED_BALLOT_ADDRESS = "0x8255121e40298D8b80d9D648A2c525810Df77E58";
 
 import { MyTokenAbi } from "../../assets/MyTokenAbi";
 import { useEffect, useState } from "react";
@@ -43,7 +43,6 @@ export default function MainComponent() {
           <TokenName></TokenName>
           <DelegateVote></DelegateVote>
           <GetWinner></GetWinner> */}
-
         </div>
       ) : (
         <div className={styles.container}>
@@ -53,7 +52,3 @@ export default function MainComponent() {
     </div>
   );
 }
-
-
-
-

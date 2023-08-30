@@ -2,6 +2,9 @@ import { useContractRead } from "wagmi";
 
 import { Narrow, Abi } from "viem";
 
+import { MyTokenAbi } from "../assets/MyTokenAbi";
+const TOKEN_CONTRACT_ADDRESS = "0xeC6f798a7Ad0D224b12C3c3Ef8876842580322C5";
+
 interface VotingPowerProps {
   address: `0x${string}` | undefined;
   tokenizedBallotAddress: `0x${string}` | undefined;
@@ -14,9 +17,9 @@ export default function VotingPower({
   abi,
 }: VotingPowerProps) {
   const { data, isError, isLoading } = useContractRead({
-    address: tokenizedBallotAddress,
-    abi: abi,
-    functionName: "votingPower",
+    address: TOKEN_CONTRACT_ADDRESS,
+    abi: MyTokenAbi,
+    functionName: "getVotes",
     args: [address],
   });
 

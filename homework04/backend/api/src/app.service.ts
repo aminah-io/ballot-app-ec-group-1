@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ethers } from 'ethers';
 // import * as myTokenJson from './assets/MyToken.json';
 
-const TOKEN_CONTRACT_ADDRESS = "0x83555B198FB77d64B296d5963203B4a160C241bc"
+const TOKEN_CONTRACT_ADDRESS = "0xeC6f798a7Ad0D224b12C3c3Ef8876842580322C5"
 
 import { MyTokenAbi } from './abi/MyTokenAbi';
 
