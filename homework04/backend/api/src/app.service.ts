@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import * as myTokenJson from "./assets/MyToken.json";
 import * as dotenv from "dotenv";
 
-dotenv.config({ path: "./../../../.env" });
+dotenv.config({ path: "./../../.env" });
 
 const TOKENIZED_BALLOT_ADDRESS = process.env.TOKENIZED_BALLOT_ADDRESS ?? "";
 

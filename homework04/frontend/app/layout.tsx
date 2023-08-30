@@ -4,6 +4,9 @@ import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 import Navbar from "@/components/navigation/navbar";
 import Footer from "@/components/navigation/footer";
 import { sepolia } from "wagmi/chains";
+import * as dotenv from "dotenv";
+
+dotenv.config({ path: "./../../.env" });
 
 const chains = [sepolia];
 
@@ -38,12 +41,12 @@ export default function RootLayout({
               style={{
                 display: "flex",
                 flexDirection: "column",
-                minHeight: "105vh",
+                minHeight: "180vh",
               }}
             >
               <Navbar />
               <div style={{ flexGrow: 1 }}>{children}</div>
-              {/* <Footer /> */}
+              <Footer />
             </div>
           </body>
         </ConnectKitProvider>
