@@ -56,4 +56,14 @@ export class AppService {
     return { result: true, txHash: receipt.hash };
   }
 
+  async delegateTokens(address: string): Promise<any> {
+
+    console.log("Delegating tx to" + address);
+    const mintAmount = ethers.parseUnits("1");
+    const tx = await this.contract.delegate(address);
+    const receipt = await tx.wait();
+
+    return { result: true, txHash: receipt.hash };
+  }
+
 }

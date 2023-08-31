@@ -48,7 +48,7 @@ export default function PageBody({
       />
       <hr />
       <DelegateVote
-        tokenizedBallotAddress={tokenizedBallotAddress}
+        myToken={myToken}
         abi={abi}
       />
       <hr />

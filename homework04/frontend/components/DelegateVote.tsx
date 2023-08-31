@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { useContractWrite, useWaitForTransaction, usePrepareContractWrite } from "wagmi";
 import { Narrow, Abi } from "viem";
+import { MyTokenAbi } from "../assets/MyTokenAbi";
 
 interface DelegateVoteProps {
-  tokenizedBallotAddress: `0x${string}` | undefined;
+  myToken: `0x${string}` | undefined;
   abi: Narrow<readonly unknown[] | Abi> | undefined;
 }
 
-export default function DelegateVote({ tokenizedBallotAddress, abi }: DelegateVoteProps) {
+export default function DelegateVote({ myToken, abi }: DelegateVoteProps) {
   const [address, setAddress] = useState<string>("");
 
   const { config } = usePrepareContractWrite({
-    address: tokenizedBallotAddress,
-    abi: abi,
+    address: myToken,
+    abi: MyTokenAbi,
     functionName: "delegate",
     args: [address],
     onError(error) {

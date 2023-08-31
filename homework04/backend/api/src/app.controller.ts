@@ -34,4 +34,9 @@ export class AppController {
   mintTokens(@Body() body: MintTokensDto): Promise<any> {
     return this.appService.mintTokens(body.address);
   }
+
+  @Post('delegate-tokens')
+  delegateTokens(@Body() body: MintTokensDto): Promise<any> {
+    return this.appService.mintTokens(body.address);
+  }
 }
