@@ -15,6 +15,9 @@ export default function DelegateVote({ tokenizedBallotAddress, abi }: DelegateVo
     abi: abi,
     functionName: "delegate",
     args: [address],
+    onError(error) {
+      console.log("🛑 DELEGATE VOTE ERROR: ", error);
+    },
   });
 
   const { data, write } = useContractWrite(config);
